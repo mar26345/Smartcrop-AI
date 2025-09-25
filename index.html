@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriAI - Smart Farming Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.9) 0%, rgba(46, 204, 113, 0.8) 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .chat-bubble {
+            border-radius: 20px 20px 20px 0;
+        }
+        .user-bubble {
+            border-radius: 20px 20px 0 20px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="sun" class="text-green-600 h-8 w-8"></i>
+                        <span class="ml-2 text-xl font-bold text-green-600">AgriAI</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center sm:space-x-8">
+                    <a href="#" class="text-green-600 border-green-500 px-3 py-2 text-sm font-medium border-b-2">Home</a>
+                    <a href="#features" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium">Features</a>
+                    <a href="#recommendations" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium">Recommendations</a>
+                    <a href="#chat" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium">AI Assistant</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium">Sign In</button>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div id="vanta-globe" class="hero-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                    <h1 class="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl" data-aos="fade-right">
+                        <span class="block">AI-Powered</span>
+                        <span class="block text-green-200">Farming Assistant</span>
+                    </h1>
+                    <p class="mt-3 text-base text-green-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0" data-aos="fade-right" data-aos-delay="100">
+                        Get personalized crop recommendations, pest alerts, and farming insights powered by artificial intelligence.
+                    </p>
+                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0" data-aos="fade-right" data-aos-delay="200">
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <a href="#recommendations" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                                    Get Started
+                                </a>
+                            </div>
+                            <div class="mt-3 sm:mt-0 sm:ml-3">
+                                <a href="#features" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-700 bg-opacity-60 hover:bg-opacity-70 md:py-4 md:text-lg md:px-10">
+                                    Learn more
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center" data-aos="fade-left">
+                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                        <div class="relative block w-full bg-white rounded-lg overflow-hidden">
+                            <img class="w-full" src="http://static.photos/agriculture/1024x576/1" alt="Smart farming">
+                            <div class="absolute inset-0 bg-green-600 opacity-20"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-green-600 font-semibold tracking-wide uppercase" data-aos="fade-up">Features</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl" data-aos="fade-up">
+                    Everything you need for smart farming
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto" data-aos="fade-up">
+                    Our AI analyzes multiple factors to provide the best farming recommendations.
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                    <!-- Feature 1 -->
+                    <div class="relative p-6 rounded-lg border border-gray-200 shadow-sm card-hover transition-all duration-300" data-aos="fade-up">
+                        <div class="flex items-center">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white">
+                                <i data-feather="droplet"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">Irrigation Optimization</h3>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-base text-gray-500">
+                            Get precise watering recommendations based on soil moisture, weather forecasts, and crop needs to conserve water and improve yields.
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="relative p-6 rounded-lg border border-gray-200 shadow-sm card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white">
+                                <i data-feather="shield"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">Pest & Disease Detection</h3>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-base text-gray-500">
+                            Upload photos of affected plants and receive instant identification of pests/diseases with organic and chemical treatment options.
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="relative p-6 rounded-lg border border-gray-200 shadow-sm card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white">
+                                <i data-feather="calendar"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">Planting Calendar</h3>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-base text-gray-500">
+                            Personalized planting and harvesting schedule based on your location's climate patterns and historical data.
+                        </div>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="relative p-6 rounded-lg border border-gray-200 shadow-sm card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white">
+                                <i data-feather="bar-chart-2"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">Market Insights</h3>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-base text-gray-500">
+                            Data-driven recommendations on which crops to plant based on current and predicted market demand in your region.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation Section -->
+    <div id="recommendations" class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-green-600 font-semibold tracking-wide uppercase" data-aos="fade-up">Recommendations</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl" data-aos="fade-up">
+                    Get Personalized Farming Advice
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="bg-white shadow overflow-hidden sm:rounded-lg" data-aos="fade-up">
+                    <div class="px-4 py-5 sm:px-6 bg-green-50 border-b border-gray-200">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                            Crop Recommendation Engine
+                        </h3>
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                            Enter your farm details to get AI-powered crop suggestions.
+                        </p>
+                    </div>
+                    <div class="px-4 py-5 sm:p-6">
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                <div class="sm:col-span-3">
+                                    <label for="soil-type" class="block text-sm font-medium text-gray-700">Soil Type</label>
+                                    <select id="soil-type" name="soil-type" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md">
+                                        <option>Select soil type</option>
+                                        <option>Clay</option>
+                                        <option>Sandy</option>
+                                        <option>Loamy</option>
+                                        <option>Silty</option>
+                                        <option>Peaty</option>
+                                        <option>Chalky</option>
+                                    </select>
+                                </div>
+
+                                <div class="sm:col-span-3">
+                                    <label for="ph-level" class="block text-sm font-medium text-gray-700">Soil pH Level</label>
+                                    <input type="range" id="ph-level" name="ph-level" min="4" max="9" step="0.1" value="6.5" class="mt-1 block w-full">
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>4.0 (Acidic)</span>
+                                        <span>6.5 (Neutral)</span>
+                                        <span>9.0 (Alkaline)</span>
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3">
+                                    <label for="region" class="block text-sm font-medium text-gray-700">Region</label>
+                                    <select id="region" name="region" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md">
+                                        <option>Select your region</option>
+                                        <option>Tropical</option>
+                                        <option>Dry</option>
+                                        <option>Temperate</option>
+                                        <option>Continental</option>
+                                        <option>Polar</option>
+                                    </select>
+                                </div>
+
+                                <div class="sm:col-span-3">
+                                    <label for="rainfall" class="block text-sm font-medium text-gray-700">Average Rainfall (mm/year)</label>
+                                    <input type="number" id="rainfall" name="rainfall" class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                </div>
+
+                                <div class="sm:col-span-6">
+                                    <label for="previous-crops" class="block text-sm font-medium text-gray-700">Previous Crops (Last 3 seasons)</label>
+                                    <input type="text" id="previous-crops" name="previous-crops" class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Corn, Wheat, Soybeans">
+                                </div>
+                            </div>
+
+                            <div class="flex justify-end">
+                                <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                    Get Recommendations
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Sample Recommendations (would be dynamically generated) -->
+                <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-up">
+                    <!-- Recommendation 1 -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-green-100 rounded-md p-3">
+                                    <i data-feather="package" class="h-6 w-6 text-green-600"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <h3 class="text-lg font-medium text-gray-900">Top Crop Suggestion</h3>
+                                    <div class="mt-1 text-sm text-gray-500">
+                                        <p>Soybeans (Glycine max)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <div class="border-t border-gray-200 pt-4">
+                                    <h4 class="text-sm font-medium text-gray-900">Why this crop?</h4>
+                                    <div class="mt-2 text-sm text-gray-500">
+                                        <p>Ideal for your loamy soil (pH 6.2-6.8), fits well in crop rotation after corn, and has strong market demand this season.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommendation 2 -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-green-100 rounded-md p-3">
+                                    <i data-feather="cloud-rain" class="h-6 w-6 text-green-600"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <h3 class="text-lg font-medium text-gray-900">Irrigation Plan</h3>
+                                    <div class="mt-1 text-sm text-gray-500">
+                                        <p>Drip irrigation recommended</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <div class="border-t border-gray-200 pt-4">
+                                    <h4 class="text-sm font-medium text-gray-900">Watering Schedule</h4>
+                                    <div class="mt-2 text-sm text-gray-500">
+                                        <p>25-30mm weekly during vegetative stage, increase to 35-40mm during flowering and pod development.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommendation 3 -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-green-100 rounded-md p-3">
+                                    <i data-feather="shield" class="h-6 w-6 text-green-600"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <h3 class="text-lg font-medium text-gray-900">Pest Alert</h3>
+                                    <div class="mt-1 text-sm text-gray-500">
+                                        <p>Watch for soybean aphids</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <div class="border-t border-gray-200 pt-4">
+                                    <h4 class="text-sm font-medium text-gray-900">Preventive Measures</h4>
+                                    <div class="mt-2 text-sm text-gray-500">
+                                        <p>Plant aphid-resistant varieties. If infestation exceeds 250 aphids/plant, consider neem oil or insecticidal soap.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chat Assistant -->
+    <div id="chat" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-green-600 font-semibold tracking-wide uppercase" data-aos="fade-up">AI Assistant</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl" data-aos="fade-up">
+                    Ask Our Farming Expert
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto" data-aos="fade-up">
+                    Get instant answers to your agricultural questions.
+                </p>
+            </div>
+
+            <div class="mt-10 max-w-3xl mx-auto" data-aos="fade-up">
+                <div class="bg-gray-50 rounded-lg shadow-md p-4 h-96 overflow-y-auto">
+                    <!-- Chat messages will appear here -->
+                    <div class="space-y-4">
+                        <!-- AI Message -->
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-green-100 rounded-full p-2">
+                                <i data-feather="cpu" class="h-5 w-5 text-green-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <div class="bg-white p-3 rounded-lg shadow-sm chat-bubble">
+                                    <p class="text-sm text-gray-700">Hello! I'm your AI farming assistant. How can I help you today? You can ask me about crop selection, pest control, weather impacts, or any other farming topic.</p>
+                                </div>
+                                <div class="mt-1 text-xs text-gray-500">
+                                    <p>AgriAI Assistant • Just now</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sample User Message -->
+                        <div class="flex items-start justify-end">
+                            <div class="ml-3">
+                                <div class="bg-green-600 p-3 rounded-lg shadow-sm user-bubble">
+                                    <p class="text-sm text-white">What's the best fertilizer for tomatoes in clay soil?</p>
+                                </div>
+                                <div class="mt-1 text-xs text-gray-500 text-right">
+                                    <p>You • Just now</p>
+                                </div>
+                            </div>
+                            <div class="flex-shrink-0 bg-green-600 rounded-full p-2">
+                                <i data-feather="user" class="h-5 w-5 text-white"></i>
+                            </div>
+                        </div>
+
+                        <!-- AI Response -->
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-green-100 rounded-full p-2">
+                                <i data-feather="cpu" class="h-5 w-5 text-green-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <div class="bg-white p-3 rounded-lg shadow-sm chat-bubble">
+                                    <p class="text-sm text-gray-700">For tomatoes in clay soil, I recommend:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1 text-sm text-gray-700">
+                                        <li>Balanced 10-10-10 fertilizer at planting</li>
+                                        <li>Switch to low-nitrogen (5-10-10) when fruiting begins</li>
+                                        <li>Add organic compost to improve clay soil structure</li>
+                                        <li>Consider calcium supplement to prevent blossom end rot</li>
+                                    </ul>
+                                    <p class="mt-2 text-sm text-gray-700">Apply fertilizer every 4-6 weeks during growing season.</p>
+                                </div>
+                                <div class="mt-1 text-xs text-gray-500">
+                                    <p>AgriAI Assistant • Just now</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <div class="flex rounded-md shadow-sm">
+                        <div class="relative flex-grow focus-within:z-10">
+                            <input type="text" name="chat-message" id="chat-message" class="focus:ring-green-500 focus:border-green-500 block w-full rounded-none rounded-l-md pl-4 sm:text-sm border-gray-300 h-12" placeholder="Ask a farming question...">
+                        </div>
+                        <button type="button" class="-ml-px relative inline-flex items-center space-x-2 px-4 py-2 border border-gray-300 text-sm font-medium rounded-r-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500">
+                            <i data-feather="send" class="h-5 w-5 text-white"></i>
+                            <span>Send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weather Alert Section -->
+    <div class="bg-yellow-50 border-t border-b border-yellow-200">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i data-feather="alert-triangle" class="h-8 w-8 text-yellow-400"></i>
+                </div>
+                <div class="ml-3">
+                    <h3 class="text-lg font-medium text-yellow-800">Weather Alert</h3>
+                    <div class="mt-2 text-sm text-yellow-700">
+                        <p>Heavy rainfall expected in your region this weekend. Consider delaying planting and ensure drainage systems are clear.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Solutions</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Crop Planning</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Pest Management</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Soil Health</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Irrigation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Resources</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Guides</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Webinars</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Research</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Company</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Team</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Connect</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Facebook</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Twitter</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Instagram</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
+                <div class="flex space-x-6 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <i data-feather="facebook" class="h-6 w-6"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <i data-feather="twitter" class="h-6 w-6"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <i data-feather="instagram" class="h-6 w-6"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <i data-feather="linkedin" class="h-6 w-6"></i>
+                    </a>
+                </div>
+                <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
+                    &copy; 2023 AgriAI. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init();
+        feather.replace();
+        
+        // Initialize Vanta.js globe
+        VANTA.GLOBE({
+            el: "#vanta-globe",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x27ae60,
+            backgroundColor: 0x27ae60,
+            size: 0.8
+        });
+
+        // Simple chat functionality
+        document.querySelector('button[type="button"]').addEventListener('click', function() {
+            const input = document.getElementById('chat-message');
+            const message = input.value.trim();
+            if (message) {
+                // Add user message
+                const chatContainer = document.querySelector('.bg-gray-50');
+                const userMessage = document.createElement('div');
+                userMessage.className = 'flex items-start justify-end mt-4';
+                userMessage.innerHTML = `
+                    <div class="ml-3">
+                        <div class="bg-green-600 p-3 rounded-lg shadow-sm user-bubble">
+                            <p class="text-sm text-white">${message}</p>
+                        </div>
+                        <div class="mt-1 text-xs text-gray-500 text-right">
+                            <p>You • Just now</p>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 bg-green-600 rounded-full p-2">
+                        <i data-feather="user" class="h-5 w-5 text-white"></i>
+                    </div>
+                `;
+                chatContainer.appendChild(userMessage);
+                
+                // Clear input
+                input.value = '';
+                
+                // Simulate AI response after delay
+                setTimeout(() => {
+                    const aiResponse = document.createElement('div');
+                    aiResponse.className = 'flex items-start mt-4';
+                    aiResponse.innerHTML = `
+                        <div class="flex-shrink-0 bg-green-100 rounded-full p-2">
+                            <i data-feather="cpu" class="h-5 w-5 text-green-600"></i>
+                        </div>
+                        <div class="ml-3">
+                            <div class="bg-white p-3 rounded-lg shadow-sm chat-bubble">
+                                <p class="text-sm text-gray-700">I'm an AI assistant and can't actually respond yet, but in a real implementation, I would analyze your question and provide a detailed farming recommendation based on your location, soil conditions, and other factors.</p>
+                            </div>
+                            <div class="mt-1 text-xs text-gray-500">
+                                <p>AgriAI Assistant • Just now</p>
+                            </div>
+                        </div>
+                    `;
+                    chatContainer.appendChild(aiResponse);
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                    feather.replace();
+                }, 1000);
+                
+                // Scroll to bottom
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
+
+
