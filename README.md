@@ -1,1 +1,1 @@
-# Smartcrop-AI
+# AI_crop_recommendation
